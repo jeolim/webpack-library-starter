@@ -2,8 +2,9 @@ var webpack = require('webpack');
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var path = require('path');
 var env = require('yargs').argv.mode;
+var LiveReloadPlugin = require('webpack-livereload-plugin');
 
-var libraryName = 'Library';
+var libraryName = 'code-practice';
 
 var plugins = [], outputFile;
 
@@ -42,7 +43,10 @@ var config = {
     root: path.resolve('./src'),
     extensions: ['', '.js']
   },
-  plugins: plugins
+  plugins: [
+    new LiveReloadPlugin({port: 35729})
+  ]
+
 };
 
 module.exports = config;
