@@ -33,6 +33,7 @@ BST.prototype.find = function(data) {
 
 BST.prototype.insert = function(data) {
   //use this data for a new node
+  // debugger;
   var n = new this._Node(data, null, null);
   //if root is null, put this new node and its data into root
   if (this.root === null) {
