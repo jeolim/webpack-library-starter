@@ -42,6 +42,7 @@ export default function GraphSort (Graph) {
   };
 
   Graph.prototype.pathTo = function(source, v) { //source and vertex come in from program file
+    // debugger;
     if (!this.hasPathTo(v)) { //if there's no path to the vertex, return undefined
       return undefined;
     }

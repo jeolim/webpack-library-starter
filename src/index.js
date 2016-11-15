@@ -1,4 +1,6 @@
 import Graph from 'lib/graph.js';
+import { BST } from 'lib/bst.js';
+
 // var home = new Graph(12); //number passed here is number of vertices in this graph
 // //Neo4J - db for graphs, connections,
 
@@ -38,8 +40,8 @@ home.addEdge(2,4);
 home.vertexList = ["Seattle","Shoreline","SoDo", //0 1 2
                     "Renton","Bothell"]; //9 10 11
 
-home.showGraph();
-home.depthFirstSearch(0);
+// home.showGraph();
+home.breadthFirstSearch(0);
 
 
 // home.showGraph();
@@ -48,7 +50,8 @@ home.depthFirstSearch(0);
 // home.depthFirstSearch(0); //start in seattle
 // home.breadthFirstSearch(0); //start in seattle
 
-// var vertex = 8; //everett is destination
-// var source = 0;
-// var paths = home.pathTo(source, vertex);
+var vertex = 4; //everett is destination
+var source = 0;
+var paths = home.pathTo(source, vertex);
+console.log('paths: ', paths);
 // home.showPath(paths); //expected outcome:0 1 4 6 8 (Seattle, Shoreline, Bothell, Lynnwood, Everett)

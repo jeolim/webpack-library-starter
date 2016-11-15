@@ -37,28 +37,6 @@ Graph.prototype.addEdge = function(from,to) { //8,3 example data
 };
 
 //Prints the long list of city name connections with arrows -->
-// Graph.prototype.showGraph = function() {
-//   var visited = [];
-//   var str;
-//   for (var i = 0; i < this.vertices; ++i) {
-//     // str += this.vertexList[i] + " -> "; //shows how each node connects to another
-//     str = '';
-//     str += i + " -> "; //shows how each node connects to another
-//     visited.push(i);
-    
-//     for (var j = 0; j < this.vertices; ++j) {
-//       if (this.adjacencies[i][j] != undefined) {
-//         // if (visited.indexOf(this.vertexList[j]) < 0) {
-//           // str += this.vertexList[j] + ' ';
-//         str += j + ' ';
-//         // }
-//       }
-//     }
-//     console.log(str);
-//     // visited.pop();
-//   }
-// };
-
 Graph.prototype.showGraph = function () {
   var str;
   for (var i = 0; i < this.vertices; ++i) {
@@ -66,17 +44,17 @@ Graph.prototype.showGraph = function () {
     str += i + " -> ";
     for (var j = 0; j < this.vertices; ++j) {
       if (this.adjacencies[i][j] != undefined) {
-        // putstr(this.adj[i][j] + ' ');
         str += this.adjacencies[i][j] + ' ';
       }
     }
 
-    console.log(str)
+    console.log(str);
   }
 }
 
 
 Graph.prototype.breadthFirstSearch = function(source) {
+  // debugger;
   var queue = [];
   queue.push(source);
 
