@@ -33,7 +33,6 @@ BST.prototype.find = function(data) {
 
 BST.prototype.insert = function(data) {
   //use this data for a new node
-  // debugger;
   var n = new this._Node(data, null, null);
   //if root is null, put this new node and its data into root
   if (this.root === null) {
@@ -51,8 +50,7 @@ BST.prototype.insert = function(data) {
           parent.left = n;
           break;
         }
-      }
-      else {
+      } else {
         current = current.right;
         if (current === null) {
           parent.right = n;
@@ -88,23 +86,41 @@ BST.prototype.postOrder = function(node) { //use post order when traversing for 
 };
 
 BST.prototype.remove = function(data) {
-  root = removeNode(this.root, data);
+  this.root = this.removeNode(this.root, data);
 };
 
-BST.prototype.removeNode = function(node, data) {
-  if (node === null) {
+BST.prototype.removeNode = function (node, data) {
+  // debugger;
+  if (node == null) {
     return null;
   }
+
   if (data == node.data) {
-    //node has no children
-    if (node.left === null && node.right === null) {
+      // node has no children
+    if (node.left == null && node.right == null) {
       return null;
     }
-    //node has no left child
-    if (node.left === null) {
+    // node has no left child
+    if (node.left == null) {
+      return node.right;
     }
-  }
-};
+    // node has no right child
+    if (node.right == null) {
+      return node.left;
+    }
+    // node has two children
+    var tempNode = this.getSmallest(node.right);
+      node.data = tempNode.data;
+      node.right = this.removeNode(node.right, tempNode.data);
+      return node;
+    } else if (data < node.data) {
+      node.left = this.removeNode(node.left, data);
+      return node;
+    } else {
+      node.right = this.removeNode(node.right, data);
+      return node;
+    }
+}
 
 BST.prototype.update = function(data) {
   var occurrences = this.find(data);
@@ -112,8 +128,25 @@ BST.prototype.update = function(data) {
   return occurrences;
 };
 
-/*
-BST.prototype.printNodes = function(arr) {
+BST.prototype.getSmallest = function (node) {
+   if (node.left == null) {
+      return node;
+   }
+   else {
+      return this.getSmallest(node.left);
+   }
+}
+
+BST.prototype.genArray = function (length) {
+  var arr = []; 
+  for(var i=0;i<length; ++i){
+    arr[i] = Math.floor(Math.random() * 101);
+  }
+  return arr; 
+}
+
+
+BST.prototype.prArray = function(arr) {
   var str = '';
   this.inOrder
   for (var i = 0; i < arr.length; i++) {
@@ -121,7 +154,7 @@ BST.prototype.printNodes = function(arr) {
   }
   return str;
 };
-*/
+
 
 /*
 1.  Add a function to the BST class that counts the number of nodes in a BST.

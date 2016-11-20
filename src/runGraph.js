@@ -30,30 +30,27 @@ import Graph from 'lib/graph.js';
 //                     "Lynnwood","Bellevue","Everett", //6 7 8
 //                     "Issaquah","Olympia","Redmond"]; //9 10 11
 
-export default function runScript () {
-	var home = new Graph(5);
-	home.addEdge(0,1); 
-	home.addEdge(0,2); 
-	home.addEdge(1,3); 
-	home.addEdge(2,4);
-	home.vertexList = ["Seattle","Shoreline","SoDo", //0 1 2
-	                    "Renton","Bothell"]; //9 10 11
 
-	// home.showGraph();
-	home.breadthFirstSearch(0);
+var home = new Graph(5);
+home.addEdge(0,1); 
+home.addEdge(0,2); 
+home.addEdge(1,3); 
+home.addEdge(2,4);
+home.vertexList = ["Seattle","Shoreline","SoDo", //0 1 2
+                    "Renton","Bothell"]; //9 10 11
 
-
-	// home.showGraph();
-
-	// home.topSort();
-	// home.depthFirstSearch(0); //start in seattle
-	// home.breadthFirstSearch(0); //start in seattle
-
-	var vertex = 4; //everett is destination
-	var source = 0;
-	var paths = home.pathTo(source, vertex);
-	console.log('paths: ', paths);
-	// home.showPath(paths); //expected outcome:0 1 4 6 8 (Seattle, Shoreline, Bothell, Lynnwood, Everett)
+// home.showGraph();
+home.breadthFirstSearch(0);
 
 
-}
+// home.showGraph();
+
+// home.topSort();
+// home.depthFirstSearch(0); //start in seattle
+// home.breadthFirstSearch(0); //start in seattle
+
+var vertex = 4; //everett is destination
+var source = 0;
+var paths = home.pathTo(source, vertex);
+console.log('paths: ', paths);
+// home.showPath(paths); //expected outcome:0 1 4 6 8 (Seattle, Shoreline, Bothell, Lynnwood, Everett)
