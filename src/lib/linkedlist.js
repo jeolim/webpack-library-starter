@@ -3,23 +3,18 @@ function Node(element) {
    this.next = null;
 }
 
-export default function LList() {
+export default function LinkedList() {
    this.head = new Node("head");
-   this.find = find;
-   this.insert = insert;
-   this.display = display;
-   this.findPrevious = findPrevious;
-   this.remove = remove;
 }
 
-function remove(item) {
+LinkedList.prototype.remove = function (item) {
    var prevNode = this.findPrevious(item);
    if (prevNode.next !== null) {
        prevNode.next = prevNode.next.next;
    }
 }
 
-function findPrevious(item) {
+LinkedList.prototype.findPrevious = function (item) {
    var currNode = this.head;
    while ( currNode.next !== null && (currNode.next.element !== item)) {
       currNode = currNode.next;
@@ -27,7 +22,7 @@ function findPrevious(item) {
    return currNode;
 }
 
-function display() {
+LinkedList.prototype.display = function () {
    var currNode = this.head;
    while (currNode.next !== null) {
       console.log(currNode.next.element);
@@ -35,7 +30,7 @@ function display() {
    }
 }
 
-function find(item) {
+LinkedList.prototype.find = function (item) {
    var currNode = this.head;
    while (currNode.element !== item) {
       currNode = currNode.next;
@@ -43,7 +38,7 @@ function find(item) {
    return currNode;
 }
 
-function insert(newElement, item) {
+LinkedList.prototype.insert = function (newElement, item) {
    var newNode = new Node(newElement);
    var current = this.find(item);
    newNode.next = current.next;
