@@ -14,15 +14,14 @@ export default function LList() {
 
 function remove(item) {
    var prevNode = this.findPrevious(item);
-   if (!(prevNode.next == null)) {
+   if (prevNode.next !== null) {
        prevNode.next = prevNode.next.next;
    }
 }
 
 function findPrevious(item) {
    var currNode = this.head;
-   while (!(currNode.next == null) && 
-           (currNode.next.element != item)) {
+   while ( currNode.next !== null && (currNode.next.element !== item)) {
       currNode = currNode.next;
    }
    return currNode;
@@ -30,7 +29,7 @@ function findPrevious(item) {
 
 function display() {
    var currNode = this.head;
-   while (!(currNode.next == null)) {
+   while (currNode.next !== null) {
       console.log(currNode.next.element);
       currNode = currNode.next;
    }
@@ -38,7 +37,7 @@ function display() {
 
 function find(item) {
    var currNode = this.head;
-   while (currNode.element != item) {
+   while (currNode.element !== item) {
       currNode = currNode.next;
    }
    return currNode;
